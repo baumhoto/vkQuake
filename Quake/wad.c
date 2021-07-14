@@ -83,7 +83,7 @@ void W_LoadWadFile (void) //johnfitz -- filename is now hard-coded for honesty
         // when app is first launched we need to create a file in the documents folder of the app
         // so it shows up in the IOS Files app thus user can copy required
         // quake files
-        fopen(va("%s/%s", com_basedir, "readme.txt"), "wb");
+        fopen(va("%s/%s", com_basedir, "dummy.txt"), "wb");
 #endif
 		Sys_Error ("W_LoadWadFile: couldn't load %s\n\n"
 			   "Basedir is: %s\n\n"

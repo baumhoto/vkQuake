@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -555,7 +555,6 @@
 		D2600123269E9CD300B6ADE4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
@@ -566,7 +565,7 @@
 				};
 			};
 			buildConfigurationList = D2600126269E9CD300B6ADE4 /* Build configuration list for PBXProject "vkQuake" */;
-			compatibilityVersion = "Xcode 13.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -826,7 +825,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = TY2VJ4HK3Y;
+				DEVELOPMENT_TEAM = JD25SHA7WV;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					USE_CODEC_VORBIS,
@@ -870,7 +869,7 @@
 					"-logg",
 					"-lvorbis",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.baumhoto.vkQuake;
+				PRODUCT_BUNDLE_IDENTIFIER = org.baumhoto.vkQuake;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "vkQuake-Bridging-Header.h";
