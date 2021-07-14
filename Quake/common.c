@@ -2406,6 +2406,17 @@ _add_path:
 	for (i = 0; ; i++)
 	{
 		q_snprintf (pakfile, sizeof(pakfile), "%s/pak%i.pak", com_gamedir, i);
+#if IOS
+// IOS is case-sensitve thus try to load with upper or lowercase letters. otherwise print a warning
+        if(pak == NULL) {
+            q_snprintf (pakfile, sizeof(pakfile), "%s/PAK%i.PAK", com_gamedir, i);
+            pak = COM_LoadPackFile (pakfile);
+        }
+        if(pak == NULL) {
+            Con_Warning("Couldn't load pakfile %s . Make sure it's either lower or uppercase but not mixed.\n", va("pak%i.pak", i));
+        }
+#endif
+        
 		pak = COM_LoadPackFile (pakfile);
 		if (i != 0 || path_id != 1 || fitzmode)
 			qspak = NULL;

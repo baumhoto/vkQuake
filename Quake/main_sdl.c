@@ -80,7 +80,12 @@ int main(int argc, char *argv[])
 	double		time, oldtime, newtime;
 
 	host_parms = &parms;
-	parms.basedir = ".";
+    
+#ifdef IOS
+    parms.basedir = va("/%s/%s", getenv("HOME"), "Documents");
+#else
+    parms.basedir = ".";
+#endif
 
 	parms.argc = argc;
 	parms.argv = argv;

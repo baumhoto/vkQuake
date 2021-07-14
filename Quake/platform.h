@@ -36,5 +36,11 @@ char *PL_GetClipboardData (void);
 /* show an error dialog */
 void PL_ErrorDialog(const char *text);
 
+#if IOS
+int GetScreenWidth(int highdpi);
+
+int GetScreenHeight(int highdpi);
+#endif
+
 #endif	/* _QUAKE_PLATFORM_H */
 

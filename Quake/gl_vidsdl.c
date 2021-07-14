@@ -97,6 +97,9 @@ static cvar_t	vid_refreshrate = {"vid_refreshrate", "60", CVAR_ARCHIVE};
 static cvar_t	vid_vsync = {"vid_vsync", "0", CVAR_ARCHIVE};
 static cvar_t	vid_desktopfullscreen = {"vid_desktopfullscreen", "0", CVAR_ARCHIVE}; // QuakeSpasm
 static cvar_t	vid_borderless = {"vid_borderless", "0", CVAR_ARCHIVE}; // QuakeSpasm
+#ifdef IOS
+static cvar_t    vid_highdpi = {"vid_highdpi", "0", CVAR_ARCHIVE}; // QuakeSpasm
+#endif
 cvar_t	vid_filter = {"vid_filter", "0", CVAR_ARCHIVE};
 cvar_t	vid_anisotropic = {"vid_anisotropic", "0", CVAR_ARCHIVE};
 cvar_t vid_fsaa = {"vid_fsaa", "0", CVAR_ARCHIVE};
@@ -392,13 +395,18 @@ static qboolean VID_SetMode (int width, int height, int refreshrate, int bpp, qb
 
 	q_snprintf(caption, sizeof(caption), "vkQuake " VKQUAKE_VER_STRING);
 
-	/* Create the window if needed, hidden */
-	if (!draw_context)
-	{
+    /* Create the window if needed, hidden */
+    if (!draw_context)
+    {
 		flags = SDL_WINDOW_HIDDEN | SDL_WINDOW_VULKAN;
 
 		if (vid_borderless.value)
 			flags |= SDL_WINDOW_BORDERLESS;
+        
+#if IOS
+        if (vid_highdpi.value)
+            flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+#endif
 		
 		draw_context = SDL_CreateWindow (caption, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 		if (!draw_context)
@@ -2400,7 +2408,11 @@ void	VID_Init (void)
 					 "vid_desktopfullscreen",
 					 "vid_fsaamode",
 					 "vid_fsaa",
-					 "vid_borderless"};
+					 "vid_borderless"
+#if IOS
+        , "vid_highdpi"
+#endif
+    };
 #define num_readvars	( sizeof(read_vars)/sizeof(read_vars[0]) )
 
 	Cvar_RegisterVariable (&vid_fullscreen); //johnfitz
@@ -2415,6 +2427,10 @@ void	VID_Init (void)
 	Cvar_RegisterVariable (&vid_fsaa);
 	Cvar_RegisterVariable (&vid_desktopfullscreen); //QuakeSpasm
 	Cvar_RegisterVariable (&vid_borderless); //QuakeSpasm
+#if IOS
+    Cvar_RegisterVariable (&vid_highdpi); //QuakeSpasm
+    Cvar_SetCallback (&vid_highdpi, VID_Changed_f);
+#endif
 	Cvar_SetCallback (&vid_fullscreen, VID_Changed_f);
 	Cvar_SetCallback (&vid_width, VID_Changed_f);
 	Cvar_SetCallback (&vid_height, VID_Changed_f);
@@ -2460,9 +2476,20 @@ void	VID_Init (void)
 	CFG_ReadCvarOverrides(read_vars, num_readvars);
 
 	VID_InitModelist();
-
-	width = (int)vid_width.value;
-	height = (int)vid_height.value;
+#if IOS
+    if(vid_highdpi.value)
+    {
+        width = display_width * 2;
+        height = display_height * 2;
+    }
+    else {
+        width = display_width;
+        height = display_height;
+    }
+#else
+    width = (int)vid_width.value;
+    height = (int)vid_height.value;
+#endif
 	refreshrate = (int)vid_refreshrate.value;
 	bpp = (int)vid_bpp.value;
 	fullscreen = (int)vid_fullscreen.value;

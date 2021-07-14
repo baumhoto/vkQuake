@@ -78,12 +78,19 @@ void W_LoadWadFile (void) //johnfitz -- filename is now hard-coded for honesty
 	if (wad_base)
 		free (wad_base);
 	wad_base = COM_LoadMallocFile (filename, NULL);
-	if (!wad_base)
+    if (!wad_base) {
+#if IOS
+        // when app is first launched we need to create a file in the documents folder of the app
+        // so it shows up in the IOS Files app thus user can copy required
+        // quake files
+        fopen(va("%s/%s", com_basedir, "readme.txt"), "wb");
+#endif
 		Sys_Error ("W_LoadWadFile: couldn't load %s\n\n"
 			   "Basedir is: %s\n\n"
 			   "Check that this has an " GAMENAME " subdirectory containing pak0.pak and pak1.pak, "
 			   "or use the -basedir command-line option to specify another directory.",
 			   filename, com_basedir);
+    }
 
 	header = (wadinfo_t *)wad_base;
 

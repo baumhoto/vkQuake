@@ -1,4 +1,41 @@
-# 🌋 vkQuake
+# vkQuake for IPadOS (iOS)
+This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and console you can use the keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. 
+
+
+## Howto install
+open the vkquake xcode project and deploy it to your iOS/IPadOS Device.
+
+ **On first run the app will quit as the game-files can not be found, but this will create an vkquake folder which you can access through the Files-App.** Open the Files-App and under "On this device" there should now be can "vkQuake"-folder. This is the base-dir thus copy the id1 and any other exentsion-pack/mod folders here. 
+
+# Background Music
+only supports ogg files. put them inside a music-folder in the respective game directory (e.g id1/music)
+
+# HighDpi/Retina
+there is a new console cvar **vid_highdpi** which when enabled will use the full retina resolution. You need to quit the app (either select quit from menu or type quit in console) after changing it so it gets saved to config file. opening the app again the full resolution will be used. 
+
+On **IPadOS 15 Beta 2** my shiny new M1 12.9 IPad Pro has stuttering issues but only when running with HighDpi enabled (2732x2048). Running without it (1366x1024) runs fine. On my "old " 12.9 IPad Pro ( from 2017 with A10X) on IPadOS 14.5 it runs fine in HighDpi (2732x2848). Seems to be audio-related 
+
+## gamepad configuration
+use the ingame controls menu to configure the gamepad buttons4
+
+## saving configuration values
+to save any changes done either via Menu or console will be saved if you quit the app via menu or enter "quit" in the console.
+
+## Expansion-pack or mods
+open in-game console with `-key and enter "game foldername" e.g. if you have hipnotic-expansion pack installed it would be game hipnotic
+
+## IOS
+ App **not tested on iOS** so your mileage may vary
+
+#  known issues
+* **app currently does not run in background** thus if you switch app it will crash. 
+* can't change any video mode settings except for Highdpi via console (see above)
+* tested on IPad's and M1 Mac running as IPad app
+* keyboard input only tested with keyboards using smart-connector so don't know about bluetooth keyboards
+
+# ----------------------------------------------------------------
+
+#  🌋 vkQuake
 vkQuake is a port of id Software's [Quake](https://en.wikipedia.org/wiki/Quake_(video_game)) using Vulkan instead of OpenGL for rendering. It is based on the popular [QuakeSpasm](http://quakespasm.sourceforge.net/) and [QuakeSpasm-Spiked](https://triptohell.info/moodles/qss/) ports and runs all mods compatible with QuakeSpasm like [Arcane Dimensions](http://www.simonoc.com/pages/design/sp/ad.htm). 
 
 Compared to QuakeSpasm vkQuake also features a software Quake like underwater effect, has better color precision, generates mipmap for water surfaces at runtime and has native support for anti-aliasing and AF. Due to the port using Vulkan and other optimizations it can also achieve much better frame rates. Code ported from QuakeSpasm-Spiked makes it possible to run the game at over 72FPS without breaking physics.

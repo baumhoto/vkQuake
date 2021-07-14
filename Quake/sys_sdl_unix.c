@@ -332,9 +332,11 @@ static void Sys_GetBasedir (char *argv0, char *dst, size_t dstsize)
 
 void Sys_Init (void)
 {
-	memset (cwd, 0, sizeof(cwd));
-	Sys_GetBasedir(host_parms->argv[0], cwd, sizeof(cwd));
-	host_parms->basedir = cwd;
+#ifndef IOS
+    memset (cwd, 0, sizeof(cwd));
+    Sys_GetBasedir(host_parms->argv[0], cwd, sizeof(cwd));
+    host_parms->basedir = cwd;
+#endif
 #ifndef DO_USERDIRS
 	host_parms->userdir = host_parms->basedir; /* code elsewhere relies on this ! */
 #else
