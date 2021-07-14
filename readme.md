@@ -35,9 +35,9 @@ technically it should work but it has not been tested
 
 
 ## Based on
-[vkQuake](https://github.com/Novum/vkQuake) - forked
-[Quake-for-iOS](https://github.com/tomkidd/Quake-iOS) - for the Launchscreen and Icon assets
-[MoltenVK](https://github.com/KhronosGroup/MoltenVK) - Vulkan to Metal translation layer
+* [vkQuake](https://github.com/Novum/vkQuake) - forked
+* [Quake-for-iOS](https://github.com/tomkidd/Quake-iOS) - for the Launchscreen and Icon assets
+* [MoltenVK](https://github.com/KhronosGroup/MoltenVK) - Vulkan to Metal translation layer
 
 # ----------------------------------------------------------------
 
