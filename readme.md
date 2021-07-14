@@ -1,38 +1,45 @@
 # vkQuake for IPadOS (iOS)
-This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and console you can use the keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. 
+This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and the in-game console you can use the external keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. Make sure to read the remarks below as there are
 
 
 ## Howto install
 open the vkquake xcode project and deploy it to your iOS/IPadOS Device.
 
- **On first run the app will quit as the game-files can not be found, but this will create an vkquake folder which you can access through the Files-App.** Open the Files-App and under "On this device" there should now be can "vkQuake"-folder. This is the base-dir thus copy the id1 and any other exentsion-pack/mod folders here. 
+ **On first run the app will quit as the game-files can not be found, but this will create an vkquake folder which you can access through the Files-App.** Open the Files-App and under "On this device" there should now be can "vkQuake"-folder (contains an empty file *dummy.txt* which can be deleted). This is the base-dir thus copy the id1 and any other extension-pack/mod folders here. 
+
+**iOS is case sensitive so make sure that the pak filenames are either lowercase  *pak0.pak*  or uppercase  *PAK0.PAK* .**
 
 # Background Music
 only supports ogg files. put them inside a music-folder in the respective game directory (e.g id1/music)
 
 # HighDpi/Retina
-there is a new console cvar **vid_highdpi** which when enabled will use the full retina resolution. You need to quit the app (either select quit from menu or type quit in console) after changing it so it gets saved to config file. opening the app again the full resolution will be used. 
+there is a new console cvar **vid_highdpi** which when enabled will use the full retina resolution. You need to quit the app (either select quit from menu or type quit in console) after changing it so it gets saved to config file. after opening the app again the retina resolution will be used. 
 
-On **IPadOS 15 Beta 2** my shiny new M1 12.9 IPad Pro has stuttering issues but only when running with HighDpi enabled (2732x2048@120). Running without it (1366x1024@120) runs fine. On my "old " 12.9 IPad Pro ( from 2017 with A10X) on IPadOS 14.5 it runs fine in HighDpi (2732x2848@120). As i experienced other audio issues i assume it's Beta related. 
+On **IPadOS 15 Beta 2** my shiny new M1 12.9 IPad Pro has stuttering issues but only when running with HighDpi enabled (2732x2048@120). Running without it (1366x1024@120) it's fine. 
+
+On my "old " 12.9 IPad Pro (from 2017 with A10X) on IPadOS 14.5 it runs fine in HighDpi (2732x2848@120). As i experienced other audio issues i assume it's Beta related. 
 
 ## gamepad configuration
-use the ingame controls menu to configure the gamepad buttons4
+use the ingame controls menu to configure the gamepad buttons
 
 ## saving configuration values
-to save any changes done either via Menu or console will be saved if you quit the app via menu or enter "quit" in the console.
+any changes done either via Menu or console will be saved if you quit the app via menu or enter "quit" in the console
 
 ## Expansion-pack or mods
-open in-game console with `-key and enter "game foldername" e.g. if you have hipnotic-expansion pack installed it would be game hipnotic
+open in-game console with `-key (tilde) and enter "game foldername" e.g. if you have hipnotic-expansion pack installed it would be game hipnotic
 
 ## IOS
 technically it should work but it has not been tested
 
 ##  known issues
-* **app currently does not run in background** thus if you switch app it will crash. 
+* **app currently does not run in background** thus if you switch app it will crash.
 * can't change any video mode settings except for Highdpi via console (see above)
 * tested on IPad's and M1 Mac running as IPad app
 * keyboard input only tested with keyboards using smart-connector so don't know about bluetooth keyboards
+* hasn't been tested with on-screen keyboard
 
+## Escape-Key on Magic Keyboard
+for keyboards without escape key you can remap the Caps Lock key to Escape in the Settings.
 
 ## Based on
 * [vkQuake](https://github.com/Novum/vkQuake) - forked
