@@ -1,9 +1,9 @@
 # vkQuake for IPadOS (iOS)
-This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and the in-game console you can use the external keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. Make sure to read the remarks below as there are
+This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and the in-game console you can use the external keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. Make sure to read the remarks below
 
 
 ## Howto install
-open the vkquake xcode project and deploy it to your iOS/IPadOS Device.
+open the vkquake xcode project and deploy it to your IPadOS (iOS) Device.
 
  **On first run the app will quit as the game-files can not be found, but this will create an vkquake folder which you can access through the Files-App.** Open the Files-App and under "On this device" there should now be can "vkQuake"-folder (contains an empty file *dummy.txt* which can be deleted). This is the base-dir thus copy the id1 and any other extension-pack/mod folders here. 
 
