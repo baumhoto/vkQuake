@@ -13,7 +13,7 @@ only supports ogg files. put them inside a music-folder in the respective game d
 # HighDpi/Retina
 there is a new console cvar **vid_highdpi** which when enabled will use the full retina resolution. You need to quit the app (either select quit from menu or type quit in console) after changing it so it gets saved to config file. opening the app again the full resolution will be used. 
 
-On **IPadOS 15 Beta 2** my shiny new M1 12.9 IPad Pro has stuttering issues but only when running with HighDpi enabled (2732x2048). Running without it (1366x1024) runs fine. On my "old " 12.9 IPad Pro ( from 2017 with A10X) on IPadOS 14.5 it runs fine in HighDpi (2732x2848). Seems to be audio-related 
+On **IPadOS 15 Beta 2** my shiny new M1 12.9 IPad Pro has stuttering issues but only when running with HighDpi enabled (2732x2048@120). Running without it (1366x1024@120) runs fine. On my "old " 12.9 IPad Pro ( from 2017 with A10X) on IPadOS 14.5 it runs fine in HighDpi (2732x2848@120). As i experienced other audio issues i assume it's Beta related. 
 
 ## gamepad configuration
 use the ingame controls menu to configure the gamepad buttons4
@@ -25,13 +25,19 @@ to save any changes done either via Menu or console will be saved if you quit th
 open in-game console with `-key and enter "game foldername" e.g. if you have hipnotic-expansion pack installed it would be game hipnotic
 
 ## IOS
- App **not tested on iOS** so your mileage may vary
+technically it should work but it has not been tested
 
-#  known issues
+##  known issues
 * **app currently does not run in background** thus if you switch app it will crash. 
 * can't change any video mode settings except for Highdpi via console (see above)
 * tested on IPad's and M1 Mac running as IPad app
 * keyboard input only tested with keyboards using smart-connector so don't know about bluetooth keyboards
+
+
+## Based on
+[vkQuake](https://github.com/Novum/vkQuake) - forked
+[Quake-for-iOS](https://github.com/tomkidd/Quake-iOS) - for the Launchscreen and Icon assets
+[MoltenVK](https://github.com/KhronosGroup/MoltenVK) - Vulkan to Metal translation layer
 
 # ----------------------------------------------------------------
 
