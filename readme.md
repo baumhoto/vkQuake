@@ -1,5 +1,5 @@
 # vkQuake for IPadOS (iOS)
-This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and the in-game console you can use the external keyboard too. Playing with keyboard/mouse also works though firing sometimes causes the aim to jump. Make sure to read the remarks below
+This is a very bare bones port of vkQuake to run on IPadOS. It does not include any touch-screen interface it loads directly into the quake main menu. You 're supposed to play it with an gamecontroller though for menu and the in-game console you can use the external keyboard too. Playing with keyboard/mouse also works. Make sure to read the remarks below
 
 
 ## Howto install
