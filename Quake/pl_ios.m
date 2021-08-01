@@ -25,6 +25,10 @@ void PL_ErrorDialog(const char *errorMsg)
 {
 }
 
+long GetMaximumFps() {
+    return [[UIScreen mainScreen] maximumFramesPerSecond];
+}
+
 int GetScreenWidth(bool retina) {
     if (retina)
         return [[UIScreen mainScreen] bounds].size.width * [[UIScreen mainScreen] scale];

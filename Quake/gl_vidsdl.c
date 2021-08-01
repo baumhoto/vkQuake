@@ -305,8 +305,10 @@ VID_IsMinimized
 */
 qboolean VID_IsMinimized (void)
 {
-	return !(SDL_GetWindowFlags(draw_context) & SDL_WINDOW_SHOWN);
+	return (SDL_GetWindowFlags(draw_context) & SDL_WINDOW_MINIMIZED);
 }
+
+
 
 /*
 ================

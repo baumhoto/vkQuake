@@ -29,6 +29,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #endif
 #include <stdio.h>
 
+
 /* need at least SDL_2.0.6 */
 #define SDL_MIN_X	2
 #define SDL_MIN_Y	0
@@ -72,13 +73,29 @@ static void Sys_InitSDL (void)
 
 #define DEFAULT_MEMORY (384 * 1024 * 1024) // ericw -- was 72MB (64-bit) / 64MB (32-bit)
 
-static quakeparms_t	parms;
+static quakeparms_t    parms;
+
+#ifdef IOS
+extern cvar_t host_maxfps;
+double  frametime, oldtime, newtime;
+void ShowFrame(void*){
+    newtime = Sys_DoubleTime ();
+    frametime = newtime - oldtime;
+
+    if (!VID_IsMinimized()) {
+        Host_Frame (frametime);
+    }
+        //printf("focus: %d\n", VID_HasMouseOrInputFocus());
+       // printf("minimized: %d\n", VID_IsMinimized());
+
+    oldtime = newtime;
+}
+
+#endif
 
 int main(int argc, char *argv[])
 {
 	int		t;
-	double		time, oldtime, newtime;
-
 	host_parms = &parms;
     
 #ifdef IOS
@@ -133,7 +150,17 @@ int main(int argc, char *argv[])
 
 	Sys_Printf("Host_Init\n");
 	Host_Init();
+#ifdef IOS
+    int maxFpsForDisplay = (int)GetMaximumFps();
+    int refreshInterval = maxFpsForDisplay / host_maxfps.value;
+    if (refreshInterval < 1) {
+        refreshInterval = 1;
+    }
+    SDL_iPhoneSetAnimationCallback(VID_GetWindow(), refreshInterval, ShowFrame, NULL);
+    return 0;
+#endif
 
+    double        time, oldtime, newtime;
 	oldtime = Sys_DoubleTime();
 	if (isDedicated)
 	{
@@ -155,7 +182,7 @@ int main(int argc, char *argv[])
 	}
 	else
 	while (1)
-	{
+    {
 		/* If we have no input focus at all, sleep a bit */
 		if (!VID_HasMouseOrInputFocus() || cl.paused)
 		{
@@ -174,3 +201,5 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
+

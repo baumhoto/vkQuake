@@ -40,6 +40,8 @@ void PL_ErrorDialog(const char *text);
 int GetScreenWidth(int highdpi);
 
 int GetScreenHeight(int highdpi);
+
+long GetMaximumFps();
 #endif
 
 #endif	/* _QUAKE_PLATFORM_H */

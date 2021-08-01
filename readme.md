@@ -32,7 +32,7 @@ open in-game console with `-key (tilde) and enter "game foldername" e.g. if you 
 technically it should work but it has not been tested
 
 ##  known issues
-* **app currently does not run in background** thus if you switch app it will crash.
+* ~~**app currently does not run in background** thus if you switch app it will crash~~ fixed
 * can't change any video mode settings except for Highdpi via console (see above)
 * tested on IPad's and M1 Mac running as IPad app
 * keyboard input only tested with keyboards using smart-connector so don't know about bluetooth keyboards
