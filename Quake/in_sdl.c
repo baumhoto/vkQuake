@@ -47,6 +47,7 @@ static SDL_JoystickID joy_active_instaceid = -1;
 static SDL_GameController *joy_active_controller = NULL;
 
 static qboolean	no_mouse = false;
+qboolean isBackground = false;
 
 static int buttonremap[] =
 {
@@ -760,6 +761,10 @@ void IN_SendKeyEvents (void)
 				VID_FocusLost();
 			}
 			break;
+            case SDL_APP_WILLENTERBACKGROUND:
+            case SDL_APP_DIDENTERBACKGROUND:
+                isBackground = true;
+                break;
 		case SDL_TEXTINPUT:
 			if (in_debugkeys.value)
 				IN_DebugTextEvent(&event);

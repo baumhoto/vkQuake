@@ -37,6 +37,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #define SDL_REQUIREDVERSION	(SDL_VERSIONNUM(SDL_MIN_X,SDL_MIN_Y,SDL_MIN_Z))
 #define SDL_NEW_VERSION_REJECT	(SDL_VERSIONNUM(3,0,0))
 
+
+
 static void Sys_AtExit (void)
 {
 	SDL_Quit();
@@ -77,17 +79,21 @@ static quakeparms_t    parms;
 
 #ifdef IOS
 extern cvar_t host_maxfps;
+extern qboolean isBackground;
 double  frametime, oldtime, newtime;
 void ShowFrame(void*){
     newtime = Sys_DoubleTime ();
     frametime = newtime - oldtime;
-
-    if (!VID_IsMinimized()) {
+    
+    if (!isBackground) {
         Host_Frame (frametime);
     }
-        //printf("focus: %d\n", VID_HasMouseOrInputFocus());
-       // printf("minimized: %d\n", VID_IsMinimized());
-
+    else {
+        SDL_Delay(32);
+        if(!VID_IsMinimized()){
+            isBackground = false;
+        }
+    }
     oldtime = newtime;
 }
 
