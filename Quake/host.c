@@ -628,6 +628,7 @@ qboolean Host_FilterTime (float time)
 	realtime += time;
 	delta_since_last_frame = realtime - oldrealtime;
 
+#ifndef IOS
 	if (host_maxfps.value)
 	{
 		//johnfitz -- max fps cvar
@@ -643,6 +644,7 @@ qboolean Host_FilterTime (float time)
 			return false; // framerate is too high
 		//johnfitz
 	}
+#endif
 
 	host_frametime = delta_since_last_frame;
 	oldrealtime = realtime;

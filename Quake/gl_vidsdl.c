@@ -2413,6 +2413,7 @@ void	VID_Init (void)
 					 "vid_borderless"
 #if IOS
         , "vid_highdpi"
+        , "host_maxfps"
 #endif
     };
 #define num_readvars	( sizeof(read_vars)/sizeof(read_vars[0]) )
