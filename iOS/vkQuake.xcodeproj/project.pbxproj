@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D214E72926E522AB00F295B4 /* miniz.c in Sources */ = {isa = PBXBuildFile; fileRef = D214E72826E522AB00F295B4 /* miniz.c */; };
 		D260018D269EA00100B6ADE4 /* menu.c in Sources */ = {isa = PBXBuildFile; fileRef = D2600147269EA00100B6ADE4 /* menu.c */; };
 		D260018E269EA00100B6ADE4 /* gl_texmgr.c in Sources */ = {isa = PBXBuildFile; fileRef = D2600148269EA00100B6ADE4 /* gl_texmgr.c */; };
 		D260018F269EA00100B6ADE4 /* snd_vorbis.c in Sources */ = {isa = PBXBuildFile; fileRef = D2600149269EA00100B6ADE4 /* snd_vorbis.c */; };
@@ -121,6 +122,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D214E72826E522AB00F295B4 /* miniz.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = miniz.c; path = ../Quake/miniz.c; sourceTree = "<group>"; };
+		D214E72A26E522D100F295B4 /* miniz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = miniz.h; path = ../Quake/miniz.h; sourceTree = "<group>"; };
 		D260012B269E9CD300B6ADE4 /* vkQuake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = vkQuake.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D260013C269E9CD300B6ADE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2600147269EA00100B6ADE4 /* menu.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = menu.c; path = ../Quake/menu.c; sourceTree = "<group>"; };
@@ -347,6 +350,7 @@
 		D2600143269E9ECA00B6ADE4 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				D214E72826E522AB00F295B4 /* miniz.c */,
 				D2600255269EACF500B6ADE4 /* snd_mem.c */,
 				D2600253269EACC300B6ADE4 /* snd_mix.c */,
 				D260017C269EA00100B6ADE4 /* bgmusic.c */,
@@ -425,6 +429,7 @@
 		D2600145269E9EF400B6ADE4 /* headers */ = {
 			isa = PBXGroup;
 			children = (
+				D214E72A26E522D100F295B4 /* miniz.h */,
 				D26001E5269EA0AA00B6ADE4 /* anorm_dots.h */,
 				D26001ED269EA0AA00B6ADE4 /* anorms.h */,
 				D26001E3269EA0AA00B6ADE4 /* arch_def.h */,
@@ -663,6 +668,7 @@
 				D26001AB269EA00100B6ADE4 /* main_sdl.c in Sources */,
 				D260019E269EA00100B6ADE4 /* snd_wave.c in Sources */,
 				D2600228269EA35100B6ADE4 /* screen_effects_8bit_comp.c in Sources */,
+				D214E72926E522AB00F295B4 /* miniz.c in Sources */,
 				D260025C269EB0B600B6ADE4 /* SDL_uikitviewcontroller.swift in Sources */,
 				D260021F269EA35100B6ADE4 /* showtris_vert.c in Sources */,
 				D2600224269EA35100B6ADE4 /* basic_vert.c in Sources */,

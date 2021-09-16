@@ -91,6 +91,8 @@ cvar_t	temp1 = {"temp1","0",CVAR_NONE};
 
 cvar_t devstats = {"devstats","0",CVAR_NONE}; //johnfitz -- track developer statistics that vary every frame
 
+cvar_t	campaign = {"campaign","0",CVAR_NONE}; // for the 2021 rerelease
+
 devstats_t dev_stats, dev_peakstats;
 overflowtimes_t dev_overflows; //this stores the last time overflow messages were displayed, not the last time overflows occured
 
@@ -308,6 +310,8 @@ void Host_InitLocal (void)
 	Cvar_RegisterVariable (&coop);
 	Cvar_RegisterVariable (&deathmatch);
 
+	Cvar_RegisterVariable (&campaign);
+
 	Cvar_RegisterVariable (&pausable);
 
 	Cvar_RegisterVariable (&temp1);
@@ -481,10 +485,11 @@ void SV_DropClient (qboolean crash)
 			continue;
 		if ((host_client->protocol_pext1 & PEXT1_CSQC) || (host_client->protocol_pext2 & PEXT2_REPLACEMENTDELTAS))
 		{
+			// From QSS - Broken or incompleted call of CL_ServerExtension_FullUserinfo_f...
 			MSG_WriteByte (&client->message, svc_stufftext);
 			MSG_WriteString (&client->message, va("//fui %u \"\"\n", (unsigned)(host_client - svs.clients)));
 		}
-		else
+
 		{
 			MSG_WriteByte (&client->message, svc_updatename);
 			MSG_WriteByte (&client->message, host_client - svs.clients);
@@ -493,6 +498,7 @@ void SV_DropClient (qboolean crash)
 			MSG_WriteByte (&client->message, host_client - svs.clients);
 			MSG_WriteByte (&client->message, 0);
 		}
+
 		MSG_WriteByte (&client->message, svc_updatefrags);
 		MSG_WriteByte (&client->message, host_client - svs.clients);
 		MSG_WriteShort (&client->message, 0);
@@ -1033,6 +1039,8 @@ void Host_Init (void)
 		CL_Init ();
 	}
 
+	LOC_Init (); // for 2021 rerelease support.
+
 	Hunk_AllocName (0, "-HOST_HUNKLEVEL-");
 	host_hunklevel = Hunk_LowMark ();
 
@@ -1096,5 +1104,7 @@ void Host_Shutdown(void)
 	}
 
 	LOG_Close ();
+
+	LOC_Shutdown ();
 }
 

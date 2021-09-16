@@ -22,8 +22,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 
-#ifndef __GLQUAKE_H
-#define __GLQUAKE_H
+#ifndef GLQUAKE_H
+#define GLQUAKE_H
 
 void GL_WaitForDeviceIdle (void);
 qboolean GL_BeginRendering (int *x, int *y, int *width, int *height);
@@ -48,7 +48,8 @@ extern	int glx, gly, glwidth, glheight;
 
 #define BACKFACE_EPSILON	0.01
 
-#define	MAX_GLTEXTURES	2048
+#define	MAX_GLTEXTURES	4096
+
 #define NUM_COLOR_BUFFERS 2
 #define INITIAL_STAGING_BUFFER_SIZE_KB	16384
 
@@ -427,6 +428,7 @@ void Sky_ClearAll (void);
 void Sky_DrawSky (void);
 void Sky_NewMap (void);
 void Sky_LoadTexture (texture_t *mt);
+void Sky_LoadTextureQ64 (texture_t *mt);
 void Sky_LoadSkyBox (const char *name);
 
 void R_ClearTextureChains (qmodel_t *mod, texchain_t chain);
@@ -444,6 +446,7 @@ void R_InitSamplers();
 void R_CreatePipelineLayouts();
 void R_CreatePipelines();
 void R_DestroyPipelines();
+
 
 #define MAX_PUSH_CONSTANT_SIZE 128 // Vulkan guaranteed minimum maxPushConstantsSize
 
@@ -506,5 +509,4 @@ byte * R_UniformAllocate(int size, VkBuffer * buffer, uint32_t * buffer_offset, 
 
 void GL_SetObjectName(uint64_t object, VkObjectType object_type, const char * name);
 
-#endif	/* __GLQUAKE_H */
-
+#endif	/* GLQUAKE_H */
